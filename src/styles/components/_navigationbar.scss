@@ -1,0 +1,21 @@
+// Overrides
+.top-bar, .top-bar ul {
+  background-color: $nav-background;
+}
+
+.top-bar {
+  .menu-text {
+    color: $nav-text-color;
+  }
+
+  .menu > .menu-text > a {
+    display: inline;
+    padding: 0;
+  }
+}
+
+// Other things
+.attribution {
+  font-size: 8px;
+  text-transform: uppercase;
+}
