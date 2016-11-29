@@ -1,9 +1,16 @@
 // Overrides
 .top-bar, .top-bar ul {
-  background-color: $nav-background;
+  background-color: $white;
 }
 
 .top-bar {
+
+  .top-bar-left {
+    a:hover, .active {
+      border-bottom: 1px solid $blue;
+    }
+  }
+
   .menu-text {
     color: $nav-text-color;
   }

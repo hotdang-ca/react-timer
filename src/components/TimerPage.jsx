@@ -1,9 +1,13 @@
 var React = require('react');
 
-var TimerPage = () => {
+var TimerPage = React.createClass({
+  render: function() {
     return (
       <div>Hello timer</div>
     );
-}
+  }
+});
+// var TimerPage = () => {
+// }
 
 module.exports = TimerPage;

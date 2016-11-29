@@ -17,8 +17,8 @@ $(document).foundation();
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path='/' component={ Main }>
-    <Route path='countdown' component={ CounterPage }/>
-    <IndexRoute component={ TimerPage } />
+      <Route path='countdown' component={ CounterPage }/>
+      <IndexRoute component={ TimerPage } />
     </Route>
   </Router>,
   document.getElementById('app')
