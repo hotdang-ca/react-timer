@@ -19,42 +19,42 @@ describe('Clock', () => {
       expect(actualText).toBe(expectedText);
     });
   });
+
+  describe('formatSeconds', () => {
+    it('should format seconds', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock />);
+      var seconds = 615;
+      var expected = '10:15';
+      var actual = clock.formatSeconds(seconds);
+
+      expect(actual).toBe(expected);
+    });
+
+    it('should format seconds min/sec are less than 10', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock />);
+      var seconds = 61;
+      var expected = '01:01';
+      var actual = clock.formatSeconds(seconds);
+
+      expect(actual).toBe(expected);
+    });
+
+    it('should work < 60 seconds', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock />);
+      var seconds = 58;
+      var expected = '00:58';
+      var actual = clock.formatSeconds(seconds);
+
+      expect(actual).toBe(expected);
+    });
+
+    it('should work < 10 seconds', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock />);
+      var seconds = 8;
+      var expected = '00:08';
+      var actual = clock.formatSeconds(seconds);
+
+      expect(actual).toBe(expected);
+    });
+  });
 });
-
-describe('formatSeconds', () => {
-  it('should format seconds', () => {
-    var clock = TestUtils.renderIntoDocument(<Clock />);
-    var seconds = 615;
-    var expected = '10:15';
-    var actual = clock.formatSeconds(seconds);
-
-    expect(actual).toBe(expected);
-  });
-
-  it('should format seconds min/sec are less than 10', () => {
-    var clock = TestUtils.renderIntoDocument(<Clock />);
-    var seconds = 61;
-    var expected = '01:01';
-    var actual = clock.formatSeconds(seconds);
-
-    expect(actual).toBe(expected);
-  });
-
-  it('should work < 60 seconds', () => {
-    var clock = TestUtils.renderIntoDocument(<Clock />);
-    var seconds = 58;
-    var expected = '00:58';
-    var actual = clock.formatSeconds(seconds);
-
-    expect(actual).toBe(expected);
-  });
-
-  it('should work < 10 seconds', () => {
-    var clock = TestUtils.renderIntoDocument(<Clock />);
-    var seconds = 8;
-    var expected = '00:08';
-    var actual = clock.formatSeconds(seconds);
-
-    expect(actual).toBe(expected);
-  });
-})
