@@ -29,6 +29,7 @@ module.exports = {
       TimerPage:          'src/components/TimerPage.jsx',
       CounterPage:        'src/components/CounterPage.jsx',
 
+      Clock:              'src/components/Clock.jsx',
       applicationStyles:  'src/styles/app.scss',
     },
     extensions: ['', '.js', '.jsx']
