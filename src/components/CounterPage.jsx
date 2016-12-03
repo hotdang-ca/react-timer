@@ -68,10 +68,10 @@ var CounterPage = React.createClass({
     this.timer = undefined;
   },
   componentWillMount: function() {
-    console.log('CounterPage Will Mount');
+    
   },
   componentDidMount: function() {
-    console.log('CounterPage Did Mount');
+    
   },
 
   render: function() {
