@@ -1,6 +1,7 @@
 var React = require('react');
 var Clock = require('Clock');
 var CountdownForm = require('CountdownForm');
+var Controls = require('Controls');
 
 var CounterPage = React.createClass({
   getInitialState: function() {
@@ -33,17 +34,43 @@ var CounterPage = React.createClass({
         case 'started':
           this.startTimer();
           break;
+        case 'stopped':
+          this.setState({
+            count: 0
+          });
+
+        case 'paused':
+          clearInterval(this.timer);
+          this.timer = undefined;
+          break;
       }
     }
   },
 
+  handleStatusChange: function(newStatus) {
+    this.setState({
+      countdownStatus: newStatus
+    });
+  },
+
   render: function() {
-    var {count} = this.state;
+    var {count, countdownStatus} = this.state;
+    console.log("Setting up...");
+
+    var renderControlArea = () => {
+      if (countdownStatus !== 'stopped') {
+        console.log("Controls");
+        return <Controls countdownStatus={countdownStatus} onStatusChanged={this.handleStatusChange}/>;
+      } else {
+        console.log("CountdownForm");
+        return <CountdownForm onSetCountdown={this.handleSetCountdown}/>;
+      }
+    };
 
     return (
       <div>
         <Clock totalSeconds={count}/>
-        <CountdownForm onSetCountdown={this.handleSetCountdown}/>
+        {renderControlArea()}
       </div>
     );
   }
