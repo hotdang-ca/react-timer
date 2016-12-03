@@ -25,6 +25,12 @@ var CounterPage = React.createClass({
         count: newCount >= 0 ? newCount : 0
       });
 
+      if (newCount === 0) {
+        this.setState({
+          countdownStatus: 'stopped'
+        });
+        
+      }
     }, 1000);
   },
 
@@ -47,22 +53,34 @@ var CounterPage = React.createClass({
     }
   },
 
+  componentWillReceiveProps: function() {
+
+  },
+
   handleStatusChange: function(newStatus) {
     this.setState({
       countdownStatus: newStatus
     });
   },
 
+  componentWillUnmount: function() {
+    clearInterval(this.timer);
+    this.timer = undefined;
+  },
+  componentWillMount: function() {
+    console.log('CounterPage Will Mount');
+  },
+  componentDidMount: function() {
+    console.log('CounterPage Did Mount');
+  },
+
   render: function() {
     var {count, countdownStatus} = this.state;
-    console.log("Setting up...");
 
     var renderControlArea = () => {
       if (countdownStatus !== 'stopped') {
-        console.log("Controls");
         return <Controls countdownStatus={countdownStatus} onStatusChanged={this.handleStatusChange}/>;
       } else {
-        console.log("CountdownForm");
         return <CountdownForm onSetCountdown={this.handleSetCountdown}/>;
       }
     };
