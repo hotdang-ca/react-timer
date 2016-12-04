@@ -6,13 +6,10 @@ var Main = require('Main');
 var TimerPage = require('TimerPage');
 var CounterPage = require('CounterPage');
 
-// load foundation
-require('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
 
 // app styles
 require('style!css!sass!applicationStyles');
-
-$(document).foundation();
 
 ReactDOM.render(
   <Router history={hashHistory}>
